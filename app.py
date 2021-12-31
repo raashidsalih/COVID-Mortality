@@ -9,7 +9,7 @@ def get_x(x):
 def get_y(y):
   return y[1]
 
-learn_inf = load_learner('res18-orig-cw.pth')
+learn_inf = load_learner('models/res18-tcia.pth')
 
 import gradio as gr
 labels = ['Low Risk', 'High Risk']
