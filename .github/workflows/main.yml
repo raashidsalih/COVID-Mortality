@@ -1,7 +1,7 @@
 on: push
 jobs:
   huggingface-sync:
-    runs-on: linux
+    runs-on: ubuntu-latest
     steps:
       - name: Hugging Face Sync
         uses: JacobLinCool/huggingface-sync@v1.0.0
