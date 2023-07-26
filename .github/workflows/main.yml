@@ -1,0 +1,20 @@
+on: push
+jobs:
+  huggingface-sync:
+    runs-on: linux
+    steps:
+      - name: Hugging Face Sync
+        uses: JacobLinCool/huggingface-sync@v1.0.0
+        with:
+            # The username (your username or organization name) of the Hugging Face.
+            user: raashidsalih
+            # The space name of the Hugging Face.
+            space: COVID-Mortality
+            # The Hugging Face access token.
+            token:  ${{ secrets.HF_TOKEN }}
+            # The GitHub Actions token.
+            github: ${{ secrets.GITHUB_TOKEN }}
+            # Can be either gradio, streamlit, docker, or static.
+            sdk: gradio
+            # Path to your main application file (which contains either gradio or streamlit Python code, or static html code). Path is relative to the root of the repository.
+            app_file: app.py
