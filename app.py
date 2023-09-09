@@ -35,14 +35,10 @@ trained and tested on datasets procured from Cohen et al. and Stony Brook
 University. Just upload an image below and click "Submit" to obtain the
 model's prediction."""
 gr_interface = gr.Interface(fn=predict,
-                            inputs=gr.inputs.Image(
-                              shape=(224, 224)
-                              ),
-                            outputs=gr.outputs.Label(
-                              num_top_classes=len(labels)
-                            ),
+                            inputs="image",
+                            outputs="label",
                             interpretation="default",
                             title=title, description=description,
                             examples=sample_xrays)
-gr_interface.launch(share=True)
+
 gr_interface.launch()
