@@ -2,6 +2,8 @@
 
 This repository contains the code for a ResNet model that can predict the mortality risk of COVID-19 patients based on their chest X-ray images. The model was trained using two datasets of chest X-ray images of COVID-19 patients, one from the [IEEE8023 public open dataset](https://github.com/ieee8023/covid-chestxray-dataset) and another from [The Cancer Imaging Archive (TCIA) repository](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=89096912). The model achieves a decent accuracy of 86% along with high sensitivity.
 
+![Interface Preview](https://github.com/raashidsalih/COVID-Mortality/blob/main/assets/Interface.png)
+You can try out the model [here](https://huggingface.co/spaces/raashidsalih/COVID-Mortality).
 ## Data
 
 The data used to train the model consists of two datasets of chest X-ray images of COVID-19 patients:
