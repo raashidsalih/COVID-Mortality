@@ -1,19 +1,24 @@
 # COVID-19 Mortality Risk Prediction Model
 
-This repository contains the code for a ResNet model that can predict the mortality risk of COVID-19 patients based on their chest X-ray images. The model was trained using two datasets of chest X-ray images of COVID-19 patients, one from the [IEEE8023 public open dataset](https://github.com/ieee8023/covid-chestxray-dataset) and another from [The Cancer Imaging Archive (TCIA) repository](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=89096912). The model achieves a decent accuracy of 86% along with high sensitivity.
+This repository contains a ResNet model and an associated Gradio-based interface that can predict the mortality risk of COVID-19 patients based on their chest X-ray images. The model was trained using two datasets of chest X-ray images of COVID-19 patients, one from the [IEEE8023 public open dataset](https://github.com/ieee8023/covid-chestxray-dataset) and another from [The Cancer Imaging Archive (TCIA) repository](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=89096912). The model achieves a decent accuracy of 86% along with high sensitivity.
 
 ![Interface Preview](https://github.com/raashidsalih/COVID-Mortality/blob/main/assets/Interface.png)
-You can try out the model [here](https://huggingface.co/spaces/raashidsalih/COVID-Mortality).
+
+
+You can try out the model [here](https://huggingface.co/spaces/raashidsalih/COVID-Mortality). You can also run the model locally by either:
+1. Using the associated DockerFile
+2. Using virtual environment in conjunction with requirements.txt
+
 ## Data
 
 The data used to train the model consists of two datasets of chest X-ray images of COVID-19 patients:
 
-- **IEEE8023 dataset**: This dataset was obtained from a [public GitHub repository](https://github.com/ieee8023/covid-chestxray-dataset) that contains chest X-ray and CT images of COVID-19 cases, as well as other diseases. The survival labels were obtained from the metadata provided in the repository, while the non-survival labels were imputed using a Random Forest Classifier that was trained on the other available metadata describing the patients’ medical conditions.
-- **Stony Brook University (SBU) dataset**: This dataset was retrieved and transformed from [The Cancer Imaging Archive (TCIA) repository](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=89096912) that contains chest X-ray images of COVID-19 patients collected by the Stony Brook Medicine Hospital. The associated survival labels were obtained from the clinical reports provided in the repository. This dataset is very rather rich, relative to the previous one, however, the images are in the DICOM format which makes it difficult to work with especially due to the large size. The images were transformed to the PNG format along with some other alterations to make them viable for this use case and the results are [publicly hosted here](https://www.kaggle.com/datasets/toxite/covid-19-cxr-ny-sbu).
+- **IEEE8023 dataset**: This dataset was obtained from a [public GitHub repository](https://github.com/ieee8023/covid-chestxray-dataset) that contains chest X-ray and CT images of COVID-19 cases, as well as other diseases. The survival labels were obtained from the metadata provided in the repository, while the sometimes missing labels were imputed using a Random Forest Classifier that was trained on the other available metadata describing the patients’ medical conditions.
+- **Stony Brook University (SBU) dataset**: This dataset was retrieved and transformed from [The Cancer Imaging Archive (TCIA) repository](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=89096912) that contains chest X-ray images of COVID-19 patients collected by the Stony Brook Medicine Hospital. The associated survival labels were obtained from the clinical reports provided in the repository. This dataset is rather rich relative to the previous one, however, the images are in the DICOM format which makes it difficult to work with especially due to the large size. The images were transformed to the PNG format along with some other alterations to make them viable for this use case and the results are [publicly hosted here](https://www.kaggle.com/datasets/toxite/covid-19-cxr-ny-sbu).
 
 ## Model
 
-The model used to predict the mortality risk of COVID-19 patients is a convolutional neural network (CNN) that is based on the ResNet18 architecture. The model was trained using two iterations:
+The model used to predict the mortality risk of COVID-19 patients is ResNet18 which is based on the  convolutional neural network (CNN) architecture. The model was trained using two iterations:
 
 - **First iteration**: The model was trained on the IEEE8023 dataset, with class weight adjustment to overcome class imbalance. 
 - **Second iteration**: The model was fine-tuned on the SBU dataset and achieved an accuracy of 86% on a test set created from a portion of the SBU dataset.
